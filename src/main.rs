@@ -11,8 +11,7 @@ const EOF: &[u8; 1] = &['\n' as u8];
 const TEAM_NAME: &str = "Your Team Name";
 
 const PROD_EXCHANGE_HOSTNAME: &str = "test-exch-production:25000";
-const EXCHANGE_HOSTNAME: &str = "test-exch-EDJ:25000";
-
+const EXCHANGE_HOSTNAME: &str = concat!("test-exch-", "Your Team Name", ":25000");
 
 const CURRENT_HOSTNAME: &str = EXCHANGE_HOSTNAME; 
 
@@ -76,7 +75,7 @@ fn say_hello(exchange: &mut TcpStream) -> std::io::Result<PortFolio> {
         "team": TEAM_NAME,
     });
     exchange.write_all(json_1.to_string().as_bytes())?;
-    exchange.write(EOF);
+    exchange.write(EOF)?;
 
     let mut reader = std::io::BufReader::new(exchange);
     let mut buffer = String::new();
@@ -114,7 +113,6 @@ fn run() -> std::io::Result<()> {
             Err(e) => eprintln!("read_from_exchange error: {}", e),
         }
     }
-    Ok(())
 }
 
 fn main() {
