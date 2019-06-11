@@ -1,5 +1,5 @@
 [package]
-name = "bot"
+name = "JaneStreetBot"
 version = "0.1.0"
 authors = ["Jiayi Zhao <jeff.no.zhao@gmail.com>"]
 edition = "2018"
