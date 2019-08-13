@@ -21,7 +21,7 @@ and `JaneStJson`.
  - `PortFolio` is a hashmap that maps symbols to i32 `String -> i32`
 
 ## Examples
-```
+```rust
 fn run() -> std::io::Result<()> {
     let mut conn = connect()?;
     let mut portfolio = say_hello(&mut conn)?;
