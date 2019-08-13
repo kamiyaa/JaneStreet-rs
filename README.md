@@ -19,3 +19,21 @@ and `JaneStJson`.
    potentially provide. This means many fields may be empty (e.g. 0-value, empty string, etc.).
    Please check `_type` field to make sure exactly which fields will be non-empty
  - `PortFolio` is a hashmap that maps symbols to i32 `String -> i32`
+
+## Examples
+```
+fn run() -> std::io::Result<()> {
+    let mut conn = connect()?;
+    let mut portfolio = say_hello(&mut conn)?;
+    match read_from_exchange(&mut conn) {
+        Ok(json) => println!("{:#?}", json),
+        Err(e) => println!("error reading from connection: {}", e),
+    }
+    Ok(())
+}
+
+fn main() {
+    run();
+}
+```
+see [main.rs](https://github.com/kamiyaa/JaneStreet-rs/blob/master/src/main.rs) for more details
